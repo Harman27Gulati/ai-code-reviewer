@@ -16,7 +16,8 @@ def webhook():
     print(json.dumps(data, indent=2))
 
     # 🔁 Path to your Java file
-    file_path = "src\\main\\java\\com\\houarizegai\\calculator\\App.java"
+    file_path = "src/main/java/com/houarizegai/calculator/App.java"
+
 
     try:
         with open(file_path, "r") as file:
