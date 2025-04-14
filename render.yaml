@@ -3,7 +3,7 @@ services:
     name: ai-code-reviewer
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn ai.reviewer:app
+    startCommand: gunicorn app:app
     plan: free
     branch: master
     envVars:
