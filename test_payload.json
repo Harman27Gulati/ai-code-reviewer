@@ -1,0 +1,17 @@
+{
+    "event": "pullrequest:created",
+    "pullrequest": {
+      "title": "Update Calculator.java",
+      "description": "Fix division bug",
+      "source": {
+        "branch": { "name": "feature/fix-bug" }
+      },
+      "destination": {
+        "branch": { "name": "main" }
+      },
+      "author": {
+        "display_name": "Harman Gulati"
+      }
+    }
+  }
+  
