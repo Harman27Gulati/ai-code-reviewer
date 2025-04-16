@@ -22,12 +22,18 @@ def webhook():
     print("\n🎯 Webhook received from Bitbucket:\n")
     print(json.dumps(data, indent=2))
 
-    # Attempt to extract PR ID safely
-    try:
-        pr_id = data["pullrequest"]["id"]
-    except KeyError:
-        print("❌ PR ID not found in payload. Please check webhook structure.")
-        return '', 400
+    # Extract the pull request object
+    pullrequest = data.get("pullrequest", {})
+
+    # Attempt to get the PR ID, or fallback to the PR title if ID is missing
+    pr_id = pullrequest.get("id")
+    if not pr_id:
+        pr_id = pullrequest.get("title")  # Fallback to the title if ID is missing
+
+    if pr_id:
+        print(f"PR ID (or fallback): {pr_id}")
+    else:
+        print("❌ PR ID not found, fallback used.")
 
     # Java file path
     file_path = "src/main/java/com/houarizegai/calculator/App.java"
