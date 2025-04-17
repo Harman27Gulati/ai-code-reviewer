@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "http://localhost:5000/webhook"
+url = "http://localhost:10000/webhook"
 
 with open("test_payload.json", "r") as file:
     payload = json.load(file)
