@@ -90,7 +90,7 @@ def webhook():
             print(f"🤖 Generating AI review for {file_name}")
             model = genai.GenerativeModel("models/gemini-1.5-pro")
             response = model.generate_content(
-                f"You are a senior Java developer. Please review the following Java code and suggest improvements in maximum 3 bullet points:\n\n{file_content}"
+                f"You are a senior Java developer. Please review the following Java code and tell what the code is doing in 1 bullet point (20-30 words) and suggest improvements in next 2 bullet points:\n\n{file_content}"
             )
             
             review_comment = response.text.strip()
@@ -98,7 +98,7 @@ def webhook():
             # Post the review as a comment on the PR
             comments_url = f"https://api.github.com/repos/{GITHUB_REPO}/issues/{pr_number}/comments"
             comment_payload = {
-                "body": f"## 🤖 AI Review for `{file_name}`\n\n{review_comment}"
+                "body": f"## AI Review for `{file_name}`\n\n{review_comment}"
             }
             
             comment_response = requests.post(
